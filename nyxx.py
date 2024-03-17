@@ -187,4 +187,4 @@ async def fswitch(ctx):
 async def drxyyt(ctx):
     await ctx.respond("Go sub to him, he needs more subs :( https://www.youtube.com/channel/UCXdpegfis3xk_03AYq_Zq8A")
 
-bot.run("MTIwOTkwMjUyODYyODUzMTIyMA.GVHGWD.FAQeczPnqwH8_snqy55smaGKWCrfhsXidxrj00")
+bot.run("BOT TOKEN HERE")
