@@ -39,6 +39,10 @@ async def help(ctx):
     /kys
 
     /drxyyt
+
+    /userinfo
+
+    /serverinfo
     
     Feel free to contact the bot owner for additional assistance.
     """
@@ -133,20 +137,23 @@ async def vguides(ctx):
 
 @bot.command(description="List of moderation commands")
 async def modhelp(ctx):
-    help_message = """
-    **Moderation Commands:**
-    /kick
+    if any(role.name in ["Admins", "Mods"] for role in ctx.author.roles):
+                           # ^ change to your actual role name
+        help_message = """
+        **Moderation Commands:**
+        /kick
 
-    /ban
+        /ban
 
-    /mute
+        /mute
 
-    /unmute
-    
-    Feel free to contact the bot owner for additional assistance.
-    """
-
-    await ctx.respond(content=help_message)
+        /unmute
+        
+        Feel free to contact the bot owner for additional assistance.
+        """
+        await ctx.respond(content=help_message)
+    else:
+        await ctx.respond("Sorry, you do not have permission to use this command.")
 
 @bot.command(description="List of Homebrew commands")
 async def hbhelp(ctx):
@@ -186,5 +193,23 @@ async def fswitch(ctx):
 @bot.command(description="Drxy's Youtube")
 async def drxyyt(ctx):
     await ctx.respond("Go sub to him, he needs more subs :( https://www.youtube.com/channel/UCXdpegfis3xk_03AYq_Zq8A")
+
+@bot.command(description="Gives information about a user")
+async def userinfo(ctx, member: discord.Member = None):
+    member = member or ctx.author
+    embed = discord.Embed(title=f"{member.name}'s info", description=f"Here is {member.name}'s info:")
+    embed.add_field(name="ID", value=member.id, inline=True)
+    embed.add_field(name="Nickname", value=member.nick, inline=True)
+    embed.add_field(name="Joined", value=member.joined_at, inline=True)
+    await ctx.respond(embed=embed)
+
+@bot.command(description="Gives information about the server")
+async def serverinfo(ctx):
+    guild = ctx.guild
+    embed = discord.Embed(title=f"{guild.name}'s info", description=f"Here is {guild.name}'s info:")
+    embed.add_field(name="ID", value=guild.id, inline=True)
+    embed.add_field(name="Members", value=guild.member_count, inline=True)
+    embed.add_field(name="Created at", value=guild.created_at, inline=True)
+    await ctx.respond(embed=embed)
 
 bot.run("BOT TOKEN HERE")
