@@ -17,6 +17,44 @@ async def on_member_join(member):
         f'Hello there **{member.name}**! Welcome to the Nyxx server! Please read #rules and check #github for updates! Enjoy your stay! <3'
     )
 
+@bot.event
+async def on_member_join(member):
+    embed = discord.Embed(title="Member Joined", description=f"{member.name} has joined the server.", color=discord.Color.green())
+    embed.add_field(name="ID", value=member.id, inline=True)
+    embed.add_field(name="Created at", value=member.created_at, inline=True)
+    log_channel = bot.get_channel("log channel id here") # Erase the quote marks
+    await log_channel.send(embed=embed)
+
+@bot.event
+async def on_member_remove(member):
+    embed = discord.Embed(title="Member Left", description=f"{member.name} has left the server.", color=discord.Color.red())
+    embed.add_field(name="ID", value=member.id, inline=True)
+    embed.add_field(name="Created at", value=member.created_at, inline=True)
+    log_channel = bot.get_channel("log channel id here") # Erase the quote marks
+    await log_channel.send(embed=embed)
+
+@bot.event
+async def on_message_delete(message):
+    embed = discord.Embed(title="Message Deleted", description=f"A message from {message.author.name} was deleted.", color=discord.Color.orange())
+    log_channel = bot.get_channel("log channel id here") # Erase the quote marks
+    await log_channel.send(embed=embed)
+
+@bot.event
+async def on_member_ban(guild, member):
+    embed = discord.Embed(title="Member Banned", description=f"{member.mention} has been banned.", color=discord.Color.red())
+    embed.add_field(name="ID", value=member.id, inline=True)
+    embed.add_field(name="Created at", value=member.created_at, inline=True)
+    log_channel = bot.get_channel("log channel id here") # Erase the quote marks
+    await log_channel.send(embed=embed)
+
+@bot.event
+async def on_member_remove(member):
+        embed = discord.Embed(title="Member Kicked", description=f"{member.mention} has been kicked.", color=discord.Color.orange())
+        embed.add_field(name="ID", value=member.id, inline=True)
+        embed.add_field(name="Created at", value=member.created_at, inline=True)
+        log_channel = bot.get_channel("log channel id here") # Erase the quote marks
+        await log_channel.send(embed=embed)
+
 # Commands
 @bot.command(description="Sends the bot's latency.") 
 async def ping(ctx):
