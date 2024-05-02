@@ -47,14 +47,6 @@ async def on_member_ban(guild, member):
     log_channel = bot.get_channel("log channel id here") # Erase the quote marks
     await log_channel.send(embed=embed)
 
-@bot.event
-async def on_member_remove(member):
-        embed = discord.Embed(title="Member Kicked", description=f"{member.mention} has been kicked.", color=discord.Color.orange())
-        embed.add_field(name="ID", value=member.id, inline=True)
-        embed.add_field(name="Created at", value=member.created_at, inline=True)
-        log_channel = bot.get_channel("log channel id here") # Erase the quote marks
-        await log_channel.send(embed=embed)
-
 # Commands
 @bot.command(description="Sends the bot's latency.") 
 async def ping(ctx):
