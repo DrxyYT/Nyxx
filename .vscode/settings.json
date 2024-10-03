@@ -1,0 +1,5 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveWhenNoErrors": true
+}
