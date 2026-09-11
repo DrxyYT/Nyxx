@@ -46,17 +46,10 @@ async def on_ready():
 
      
 # Load cogs (modules)
-bot.load_extension('Cogs.Moderation')
-bot.load_extension('Cogs.General')
-bot.load_extension('Cogs.Homebrews')
-bot.load_extension('Cogs.Pretendo')
-bot.load_extension('Cogs.AutoFeatures')
-bot.load_extension('Cogs.ReactionRoles')
-bot.load_extension('Cogs.Logging')
-bot.load_extension('Cogs.ServerManagement')
-bot.load_extension('Cogs.RoleManagement')
-bot.load_extension('Cogs.Reporting')
-bot.load_extension('Cogs.Fun')
+bot.load_extension('Cogs.Administration')
+bot.load_extension('Cogs.Community')
+bot.load_extension('Cogs.Information')
+bot.load_extension('Cogs.Server')
 
 # Load environment variables
 load_dotenv()
